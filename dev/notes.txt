@@ -1,0 +1,52 @@
+
+
+------------------------------------
+Tool Operations
+------------------------------------
+    - Workplane
+        - Edit transform
+        - Menu for editing and selecting
+        - Saves workplanes into blend file
+    - 2D Sketch
+        - Draw from workplanes / floor / Auto Ray
+        - Works on in memory data
+        - Converts to bmesh
+    - 3D Sketch
+        - Push Pull
+        - Bevel
+            - Can start with selection / remove by going to 0
+        - Chamfer
+            - Can start with selection / remove by going to 0
+        - Line
+            - Cut / Knife / Seperate
+        - Select
+            - Loops
+            - UV Islands
+            - Sharp Boundry
+            - Bevel
+
+------------------------------------
+Tool GUI
+------------------------------------
+    - Workplane
+        - Set
+        - Project
+        - Intersect
+    - 2D Drawing
+        - Point
+        - Line
+        - Circle
+        - NGon
+        - Arc
+        - Rectangle
+        - Spline
+        - Elipse
+    - 2D Edit
+        - Move
+        - Copy
+        - Rotate
+        - Erase
+        - Offset
+    - 3D Drawing
+
+

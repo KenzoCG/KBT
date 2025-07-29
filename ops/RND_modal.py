@@ -47,7 +47,7 @@ class MS_OT_RND_Modal(Operator):
             self.events = utils.event.Events()
             self.events.CONFIRM = {'RET', 'NUMPAD_ENTER'}
             self.events.CANCEL  = {'ESC'}
-            self.controls = utils.event.Controls(events=self.events)
+            self.controls = utils.event.UserControls(events=self.events)
             self.region_ui_controller = utils.screen.RegionUI_Controller(context)
             self.region_ui_controller.hide(header=False, tool_settings=False, toolbar=False, sidebar=False, last_op=False)
             # Startup
@@ -140,22 +140,30 @@ class MS_OT_RND_Modal(Operator):
     # --- Operations --- #
 
     def startup(self, context, event):
-        pass
+        # Menu
+        self.menu = utils.gui.BoxMenu()
+        self.menu.build(context, event)
 
 
     def shutdown(self, context):
+        # Menu
+        self.menu.close(context)
+        # Cancel
         if self.status == MODAL_STATUS.CANCELLED:
             pass
+        # Confirm
         else:
             pass
 
 
     def update(self, context, event):
-        pass
+        # Menu
+        self.menu.update(context, event)
 
 
     def draw_2d(self, context):
-        pass
+        # Menu
+        self.menu.draw_2d(context)
 
 
     def draw_3d(self, context):

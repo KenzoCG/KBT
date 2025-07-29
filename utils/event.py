@@ -25,7 +25,7 @@ class Events:
         self.DRAG      = {'RIGHTMOUSE', 'LEFTMOUSE'}
 
 
-class Controls:
+class UserControls:
     def __init__(self, events=None):
         self.events = events if isinstance(events, Events) else Events()
         self.key = ''

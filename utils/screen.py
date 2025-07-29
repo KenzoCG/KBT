@@ -11,7 +11,7 @@ def ui_scale():
     return bpy.context.preferences.system.ui_scale
 
 # ------------------------------------------------------------------------------- #
-# CLASSES
+# TYPES
 # ------------------------------------------------------------------------------- #
 
 class RegionUI_Controller:
@@ -50,28 +50,28 @@ class RegionUI_Controller:
         if hasattr(self.context, 'space_data'):
             space_data = self.context.space_data
             if hasattr(space_data, 'show_region_header'):
-                if self.header is not None:
+                if self.header is not None and self.header != space_data.show_region_header:
                     space_data.show_region_header = self.header
             if hasattr(space_data, 'show_region_tool_header'):
-                if self.tool_settings is not None:
+                if self.tool_settings is not None and self.tool_settings != space_data.show_region_tool_header:
                     space_data.show_region_tool_header = self.tool_settings
             if hasattr(space_data, 'show_region_toolbar'):
-                if self.toolbar is not None:
+                if self.toolbar is not None and self.toolbar != space_data.show_region_toolbar:
                     space_data.show_region_toolbar = self.toolbar
             if hasattr(space_data, 'show_region_ui'):
-                if self.sidebar is not None:
+                if self.sidebar is not None and self.sidebar != space_data.show_region_ui:
                     space_data.show_region_ui = self.sidebar
             if hasattr(space_data, 'show_region_hud'):
-                if self.last_op is not None:
+                if self.last_op is not None and self.last_op != space_data.show_region_hud:
                     space_data.show_region_hud = self.last_op
             if hasattr(space_data, 'show_region_asset_shelf'):
-                if self.asset_shelf is not None:
+                if self.asset_shelf is not None and self.asset_shelf != space_data.show_region_asset_shelf:
                     space_data.show_region_asset_shelf = self.asset_shelf
             if hasattr(space_data, 'show_gizmo'):
-                if self.gizmos is not None:
+                if self.gizmos is not None and self.gizmos != space_data.show_gizmo:
                     space_data.show_gizmo = self.gizmos
             if hasattr(space_data, 'show_gizmo_tool'):
-                if self.tool_gizmo is not None:
+                if self.tool_gizmo is not None and self.tool_gizmo != space_data.show_gizmo_tool:
                     space_data.show_gizmo_tool = self.tool_gizmo
 
 

@@ -6,18 +6,31 @@ import bpy
 import math
 import time
 import traceback
+from uuid import uuid4
 from mathutils import (
     Vector,
     Matrix,
     Color,
 )
-from .screen import (
-    ui_scale,
-    ScreenDimensions,
-)
+from .builder import Data
 
 # ------------------------------------------------------------------------------- #
-# TYPES
+# CONTAINERS | SEPARATORS
 # ------------------------------------------------------------------------------- #
 
+class Panel:
+    def __init__(self):
+        pass
+
+
+    def build(self, DT:Data):
+        pass
+
+
+    def update(self, DT:Data):
+        pass
+
+
+    def draw_2d(self, DT:Data):
+        pass
 
