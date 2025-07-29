@@ -2,44 +2,29 @@
 # IMPORTS
 # ------------------------------------------------------------------------------- #
 
-import bpy
-import math
-import time
-import traceback
-from uuid import uuid4
-from mathutils import (
-    Vector,
-    Matrix,
-    Color,
+from enum import (
+    Enum,
+    Flag,
+    auto
 )
-from .builder import Data
 
 # ------------------------------------------------------------------------------- #
-# MENU SYSTEMS
+# MODAL
 # ------------------------------------------------------------------------------- #
 
+class SPACER(Enum):
+    NONE = 0
+    LEFT = 1
+    RIGHT = 2
+    CENTER = 3
 
-# BoxMenu | PickMenu | PieMenu | InfoMenu
+
+class SPAN(Enum):
+    NONE = 0
+    HORIZONTAL = 1
+    VERTICAL = 2
 
 
-class BoxMenu:
+class Grid:
     def __init__(self):
-        self.DT = None
-        self.containers = []
-
-
-    def build(self, context, event):
-        self.DT = Data(context, event)
-
-
-    def close(self, context):
         pass
-
-
-    def update(self, context, event):
-        pass
-
-
-    def draw_2d(self, context):
-        pass
-
