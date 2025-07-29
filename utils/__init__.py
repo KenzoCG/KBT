@@ -8,10 +8,12 @@ from . import context
 from . import debug
 from . import enums
 from . import event
+from . import graphics
 from . import maths
 from . import ray
 from . import screen
 from . import shader
+from . import gui
 
 # ------------------------------------------------------------------------------- #
 # REGISTER

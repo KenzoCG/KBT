@@ -50,8 +50,8 @@ class MS_OT_RND_Modal(Operator):
             self.controls = utils.event.Controls(events=self.events)
             self.region_ui_controller = utils.screen.RegionUI_Controller(context)
             self.region_ui_controller.hide(header=False, tool_settings=False, toolbar=False, sidebar=False, last_op=False)
-            # Tool
-            self.setup(context, event)
+            # Startup
+            self.startup(context, event)
             # Shader
             self.shader_handler = utils.shader.ShaderHandler()
             self.shader_handler.register(context, callback_2d=self.draw_2d, callback_3d=self.draw_3d)
@@ -70,6 +70,36 @@ class MS_OT_RND_Modal(Operator):
                     self.__user_callback_2d = None
                     traceback.print_exc()
             return {'CANCELLED'}
+
+
+    def close(self, context):
+        # Stop
+        if PRINT_START_STOP:
+            print("OP - STOP")
+        # Reset
+        try:
+            self.shader_handler.unregister()
+            self.region_ui_controller.restore()
+            self.shader_handler = None
+            self.region_ui_controller = None
+            del self.shader_handler
+            del self.region_ui_controller
+        except Exception as e:
+            traceback.print_exc()
+        # Shutdown
+        try:
+            self.shutdown(context)
+        except Exception as e:
+            traceback.print_exc()
+        # Redraw
+        if hasattr(context, 'area'):
+            if hasattr(context.area, 'tag_redraw'):
+                context.area.tag_redraw()
+        # Cancel
+        if self.status == MODAL_STATUS.CANCELLED:
+            return {'CANCELLED'}
+        # Confirm
+        return {'FINISHED'}
 
 
     def modal(self, context, event):
@@ -97,9 +127,9 @@ class MS_OT_RND_Modal(Operator):
         if PRINT_TIME:
             end_time = time.time()
             print(f"TIME - {(end_time-start_time):0.4f}")
-        # Exit
+        # Close
         if self.status == MODAL_STATUS.FINISHED or self.status == MODAL_STATUS.CANCELLED:
-            return self.exit(context)
+            return self.close(context)
         # Pass
         elif self.status == MODAL_STATUS.PASS_THROUGH:
             return {'PASS_THROUGH'}
@@ -107,34 +137,17 @@ class MS_OT_RND_Modal(Operator):
         context.area.tag_redraw()
         return {'RUNNING_MODAL'}
 
+    # --- Operations --- #
 
-    def exit(self, context):
-        # Stop
-        if PRINT_START_STOP:
-            print("OP - STOP")
-        # Reset
-        try:
-            self.shader_handler.unregister()
-            self.region_ui_controller.restore()
-            self.shader_handler = None
-            self.region_ui_controller = None
-            del self.shader_handler
-            del self.region_ui_controller
-        except Exception as e:
-            traceback.print_exc()
-        # Redraw
-        if hasattr(context, 'area'):
-            if hasattr(context.area, 'tag_redraw'):
-                context.area.tag_redraw()
-        # Cancel
-        if self.status == MODAL_STATUS.CANCELLED:
-            return {'CANCELLED'}
-        # Confirm
-        return {'FINISHED'}
-
-
-    def setup(self, context, event):
+    def startup(self, context, event):
         pass
+
+
+    def shutdown(self, context):
+        if self.status == MODAL_STATUS.CANCELLED:
+            pass
+        else:
+            pass
 
 
     def update(self, context, event):

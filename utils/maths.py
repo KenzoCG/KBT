@@ -13,14 +13,10 @@ from mathutils import (
     Vector,
     Quaternion,
     Matrix,
-    Euler,
-    Color,
 )
 from mathutils import geometry
 from mathutils.kdtree import KDTree
 from mathutils.bvhtree import BVHTree
-
-import numpy
 import math
 from math import (
     floor,
