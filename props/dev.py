@@ -23,15 +23,15 @@ from .. import utils
 # ------------------------------------------------------------------------------- #
 
 class MS_PROPS_Dev(PropertyGroup):
-    debug : BoolProperty(name="Debug", default=False)
+    debug_on : BoolProperty(name="Debug", default=True)
 
     @staticmethod
     def draw(layout):
+        # Prefs
         prefs = utils.addon.prefs()
         dev = prefs.dev
-
         # Settings
         box = layout.box()
         box.label(text="Dev", icon='TOOL_SETTINGS')
         row = box.row(align=True)
-        row.prop(dev, 'debug')
+        row.prop(dev, 'debug_on')

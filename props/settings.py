@@ -29,9 +29,9 @@ class MS_PROPS_Settings(PropertyGroup):
 
     @staticmethod
     def draw(layout):
+        # Prefs
         prefs = utils.addon.prefs()
         settings = prefs.settings
-
         # Settings
         box = layout.box()
         box.label(text="Settings", icon='TOOL_SETTINGS')

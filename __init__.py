@@ -3,21 +3,22 @@
 # ------------------------------------------------------------------------------- #
 
 bl_info = {
-    "name": "Mesh Sketch",
-    "description": "Mesh editing pen tool",
-    "author": "KenzoCG",
-    "version": (1, 0, 0),
-    "blender": (4, 4, 0),
-    "location": "View3D",
-    "category": "3D View"}
+    'name'       : "MeshSketcher",
+    'description': "Mesh editing pen tool",
+    'author'     : "KenzoCG",
+    'version'    : (1, 0, 0),
+    'blender'    : (4, 4, 0),
+    'location'   : "View3D",
+    'category'   : "3D View"}
 
 # ------------------------------------------------------------------------------- #
 # REGISTER
 # ------------------------------------------------------------------------------- #
 
 def register():
-    # Load
+    # Handles
     from . import utils
+    utils.register()
     # Props
     from . import props
     props.register()
@@ -27,9 +28,13 @@ def register():
     # Interface
     from . import interface
     interface.register()
+    # Keys
+    register_keymaps()
 
 
 def unregister():
+    # Keys
+    unregister_keymaps()
     # Interface
     from . import interface
     interface.unregister()
@@ -39,3 +44,44 @@ def unregister():
     # Props
     from . import props
     props.unregister()
+    # Handles
+    from . import utils
+    utils.unregister()
+
+# ------------------------------------------------------------------------------- #
+# KEYMAPS
+# ------------------------------------------------------------------------------- #
+
+KEYS = []
+
+
+def register_keymaps():
+    # Global
+    import bpy
+    global KEYS
+    # Addons
+    kc = bpy.context.window_manager.keyconfigs.addon
+    # Keymap
+    km = kc.keymaps.new(name="3D View", space_type="VIEW_3D")
+    # Menu V3D
+    kmi = km.keymap_items.new("wm.call_menu", 'Q', "PRESS", ctrl=False, shift=False, alt=False)
+    kmi.properties.name = "MS_MT_Menu_V3D"
+    KEYS.append((km, kmi))
+
+
+def unregister_keymaps():
+    # Global
+    import bpy
+    global KEYS
+    # Keymaps
+    keymaps = [km for km, kmi in KEYS]
+    # Remove Keymap Items
+    for km, kmi in KEYS:
+        km.keymap_items.remove(kmi)
+    # Remove Keymaps
+    kc = bpy.context.window_manager.keyconfigs.addon
+    for km in keymaps[:]:
+        if km.name in kc.keymaps.keys():
+            kc.keymaps.remove(km)
+    # Clear
+    KEYS = []

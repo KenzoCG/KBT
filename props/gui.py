@@ -33,11 +33,12 @@ class MS_PROPS_GUI_Settings(PropertyGroup):
 
 
 class MS_PROPS_GUI(PropertyGroup):
-    settings : PointerProperty(type=KT_PROPS_GUI_Settings)
-    colors   : PointerProperty(type=KT_PROPS_GUI_Colors)
+    settings : PointerProperty(type=MS_PROPS_GUI_Settings)
+    colors   : PointerProperty(type=MS_PROPS_GUI_Colors)
 
     @staticmethod
     def draw(layout):
+        # Prefs
         prefs = utils.addon.prefs()
         gui = prefs.gui
         settings = gui.settings
