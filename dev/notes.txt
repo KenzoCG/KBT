@@ -1,52 +1,78 @@
+# ------------------------------------------------------------------------------- #
+# Addon Name : MeshSketcher
+# Author     : KenzoCG
+# Copyright  : ©CGBoundary
+# ------------------------------------------------------------------------------- #
 
 
-------------------------------------
-Tool Operations
-------------------------------------
-    - Workplane
-        - Edit transform
-        - Menu for editing and selecting
-        - Saves workplanes into blend file
-    - 2D Sketch
-        - Draw from workplanes / floor / Auto Ray
-        - Works on in memory data
-        - Converts to bmesh
-    - 3D Sketch
+● NOTES
+    - Draw or Edit is done with left or right click?
+
+
+# ------------------------------------------------------------------------------- #
+# Tool Categories
+# ------------------------------------------------------------------------------- #
+
+● Workplane
+    - TOOLS
+        - Set
+        - Project
+        - Intersect
+    - FEATURES
+        - MENU  > select / edit / sketch / delete
+        - DATA  > Works with in memory data but loads / saves to blend file / optionally export and import from JSON file
+        - GIZMO > Custom BVHTree gizmos for editing transform / starting sketch / delete
+
+● Draw
+    - TOOLS
+        - Point
+        - Line
+        - Circle
+        - NGon
+        - Poly Line
+        - Arc
+        - Rectangle
+        - Spline
+        - Elipse
+        - Cube
+        - Cylinder
+        - Sphere
+            - Quad / UV / ICO
+        - Cone
+            - Base / Cap
+        - 3D Curves
+    - FEATURES
+        - MENU > Ability to edit the workplane associated, specifally the transform
+        - FROM > Workplanes / Floors / Auto Ray / ID Objects transform
+        - DATA > Works with in memory data but exits to mesh data / optionally export and import from JSON file
+        - EXIT > Project Knife / To boolean with adjustments / To curve with adjustments
+
+● Edit
+    - TOOLS
+        - Move
+        - Copy
+        - Rotate
+        - Erase
+        - Offset
         - Push Pull
         - Bevel
             - Can start with selection / remove by going to 0
         - Chamfer
             - Can start with selection / remove by going to 0
         - Line
-            - Cut / Knife / Seperate
+            - Cut / Knife / Seperate / Loop
+        - Connect
+            - Select elements to join across
+        - Merge
+            - Select elements to merge
+            - Merge by radius
         - Select
             - Loops
             - UV Islands
             - Sharp Boundry
             - Bevel
-
-------------------------------------
-Tool GUI
-------------------------------------
-    - Workplane
-        - Set
-        - Project
-        - Intersect
-    - 2D Drawing
-        - Point
-        - Line
-        - Circle
-        - NGon
-        - Arc
-        - Rectangle
-        - Spline
-        - Elipse
-    - 2D Edit
-        - Move
-        - Copy
-        - Rotate
-        - Erase
-        - Offset
-    - 3D Drawing
-
-
+    - FEATURES
+        - MENU > Ability to edit the workplane associated, specifally the transform
+        - FROM > Workplanes / Floors / Auto Ray / ID Objects transform
+        - DATA > Works with in memory data but exits to mesh data / optionally export and import from JSON file
+        - EXIT > Project Knife / To boolean with adjustments / To curve with adjustments
