@@ -45,3 +45,9 @@ class SPAN(Enum):
     FILL       = 1
     HORIZONTAL = 2
     VERTICAL   = 3
+
+
+class STYLE(Enum):
+    NONE    = 0
+    UNIFORM = 1
+    SMOOTH  = 2

@@ -110,7 +110,7 @@ def gen_uniform_color_points_batch(points=None):
 
 def gen_uniform_color_line_batch(lines=None):
     """
-    lines : list of tuples containing 2 vectors each
+    lines : list of vectors, vectors will be paired
     """
     return batch_for_shader(UNIFORM_COLOR, 'LINES', {"pos": lines})
 
@@ -124,6 +124,14 @@ def gen_uniform_color_tri_batch(tris=None):
     return batch_for_shader(UNIFORM_COLOR, 'TRIS', {"pos": points}, indices=indices)
 
 
+def gen_uniform_color_tri_batch_indexed(points=None, indices=None):
+    """
+    points  : list of vectors
+    indices : list of tuples where each tuple contains 3 integers
+    """
+    return batch_for_shader(UNIFORM_COLOR, 'TRIS', {"pos": points}, indices=indices)
+
+
 def draw_uniform_color_batch(batch, color=(0,0,0,1)):
     UNIFORM_COLOR.uniform_float("color", color)
     batch.draw(UNIFORM_COLOR)
@@ -134,7 +142,7 @@ def draw_uniform_color_batch(batch, color=(0,0,0,1)):
 
 def gen_smooth_color_line_batch(lines=None, colors=None):
     """
-    lines  : list of tuples containing 2 vectors each
+    lines  : list of vectors, vectors will be paired
     colors : list of vectors with length 4, count must match total points
     """
     return batch_for_shader(SMOOTH_COLOR, 'LINES', {"pos": lines, "color": colors})
@@ -152,8 +160,9 @@ def gen_smooth_color_tri_batch(tris=None, colors=None):
 
 def gen_smooth_color_tri_batch_indexed(points=None, colors=None, indices=None):
     """
-    points : list of vectors
-    colors : list of vectors with length 4, count must match total points
+    points  : list of vectors
+    colors  : list of vectors of length 4, count must match total points
+    indices : list of tuples where each tuple contains 3 integers
     """
     return batch_for_shader(SMOOTH_COLOR, 'TRIS', {"pos": points, "color": colors}, indices=indices)
 

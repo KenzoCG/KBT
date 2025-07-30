@@ -14,6 +14,7 @@ from . import maths
 from . import ray
 from . import screen
 from . import shader
+from . import shapes
 from . import gui
 
 # ------------------------------------------------------------------------------- #

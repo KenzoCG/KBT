@@ -18,7 +18,7 @@ from ..enums import (
     ANCHOR,
     SPAN,
 )
-from ..maths import Rect2D
+from ..shapes import Rect2D
 
 # ------------------------------------------------------------------------------- #
 # MENU SYSTEMS
