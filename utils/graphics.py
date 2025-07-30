@@ -17,7 +17,8 @@ from math import (
     sin,
     pi,
 )
-from .screen import ui_scale
+from . import addon
+from . import screen
 
 # ------------------------------------------------------------------------------- #
 # CONSTANTS
@@ -131,7 +132,31 @@ def draw_circle_2d(radius=12, res=32, center=Vector((0,0)), color=(0,0,0,1)):
 # TEXT
 # ------------------------------------------------------------------------------- #
 
-def word_wrap_set(on=True, width=100):
+def get_scaled_font_size():
+    prefs = addon.prefs()
+    size = prefs.gui.settings.font_size
+    return size * screen.ui_scale()
+
+
+def get_measured_font_height(size=12):
+    blf.size(0, size)
+    font_h = round(blf.dimensions(0, "Klgjy`")[1])
+    return font_h
+
+
+def get_measured_font_descender(size=12):
+    blf.size(0, size)
+    font_h = round(blf.dimensions(0, "Klgjy`")[1])
+    return round(font_h / 4)
+
+
+def get_measured_text_dimensions(text="", size=12):
+    blf.size(0, size)
+    width, height = blf.dimensions(0, text)
+    return width, height
+
+
+def set_word_wrap(on=True, width=100):
     if on:
         blf.word_wrap(0, width)
         blf.enable(0, blf.WORD_WRAP)
@@ -140,22 +165,8 @@ def word_wrap_set(on=True, width=100):
         blf.word_wrap(0, 0)
 
 
-def text_dims(text="", size=12):
-    blf.size(0, size)
-    factor = ui_scale()
-    w, h = blf.dimensions(0, text)
-    return round(w * factor), round(h * factor)
-
-
-def font_heights(size=12):
-    blf.size(0, size)
-    font_h = round(blf.dimensions(0, "Klgjy`")[1] * ui_scale())
-    descender_h = round(font_h / 4)
-    return font_h, descender_h
-
-
-def draw_text(text, x, y, size=12, color=(1,1,1,1)):
+def draw_text(text="", x=0, y=0, size=12, color=(1,1,1,1)):
     blf.position(0, x, y, 0)
-    blf.size(0, int(size * ui_scale()))
+    blf.size(0, int(size))
     blf.color(0, *color)
     blf.draw(0, text)

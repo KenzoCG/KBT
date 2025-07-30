@@ -4,6 +4,7 @@
 
 import bpy
 from . import addon
+from . import bmu
 from . import context
 from . import debug
 from . import enums

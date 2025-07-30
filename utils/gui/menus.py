@@ -28,7 +28,7 @@ class BoxMenu:
         self.containers = []
 
 
-    def build(self, context, event):
+    def build(self, context, event, width=0, height=0):
         self.DT = Data(context, event)
 
 

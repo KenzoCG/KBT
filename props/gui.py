@@ -29,7 +29,7 @@ class MS_PROPS_GUI_Colors(PropertyGroup):
 
 class MS_PROPS_GUI_Settings(PropertyGroup):
     padding   : IntProperty(name="UI Padding", min=3, max=10, default=3)
-    text_size : IntProperty(name="Text Size", min=8, max=24, default=12)
+    font_size : IntProperty(name="Font Size", min=8, max=24, default=12)
 
 
 class MS_PROPS_GUI(PropertyGroup):
@@ -49,7 +49,7 @@ class MS_PROPS_GUI(PropertyGroup):
         row = box.row(align=True)
         row.prop(settings, 'padding', text="Padding")
         row = box.row(align=True)
-        row.prop(settings, 'text_size', text="Text Size")
+        row.prop(settings, 'font_size', text="Font Size")
         # Colors
         box = layout.box()
         box.label(text="GUI Colors", icon='COLOR')
