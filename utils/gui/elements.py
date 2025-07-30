@@ -13,6 +13,12 @@ from mathutils import (
     Color,
 )
 from .builder import Data
+from ..enums import (
+    GUI_STATUS,
+    ANCHOR,
+    SPAN,
+)
+from ..maths import Rect2D
 
 # ------------------------------------------------------------------------------- #
 # CONTROLS

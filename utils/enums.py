@@ -9,7 +9,7 @@ from enum import (
 )
 
 # ------------------------------------------------------------------------------- #
-# MODAL
+# ENUMS
 # ------------------------------------------------------------------------------- #
 
 class MODAL_STATUS(Enum):
@@ -19,9 +19,6 @@ class MODAL_STATUS(Enum):
     CANCELLED     = 3
     PASS_THROUGH  = 4
 
-# ------------------------------------------------------------------------------- #
-# GUI
-# ------------------------------------------------------------------------------- #
 
 class GUI_STATUS(Enum):
     IDLE    = 0
@@ -29,13 +26,15 @@ class GUI_STATUS(Enum):
 
 
 class ANCHOR(Enum):
-    CENTER_LEFT   = 0
-    CENTER_MIDDLE = 1
-    CENTER_RIGHT  = 2
-    TOP_LEFT      = 3
-    TOP_RIGHT     = 4
-    BOTTOM_LEFT   = 5
-    BOTTOM_RIGHT  = 6
+    TOP_L = 0
+    TOP_C = 1
+    TOP_R = 2
+    MID_L = 3
+    MID_C = 4
+    MID_R = 5
+    BOT_L = 6
+    BOT_C = 7
+    BOT_R = 8
 
 
 class SPAN(Enum):

@@ -13,33 +13,42 @@ from mathutils import (
     Color,
 )
 from .builder import Data
+from ..enums import (
+    GUI_STATUS,
+    ANCHOR,
+    SPAN,
+)
+from ..maths import Rect2D
 
 # ------------------------------------------------------------------------------- #
 # MENU SYSTEMS
 # ------------------------------------------------------------------------------- #
 
-
-# BoxMenu | PickMenu | PieMenu | InfoMenu
-
-
 class BoxMenu:
-    def __init__(self):
+    def __init__(self, x=0, y=0, w=0, h=0, anchor=ANCHOR.MID_C):
+        self.rect = Rect2D(x, y, w, h, anchor)
         self.DT = None
         self.containers = []
 
 
-    def build(self, context, event, width=0, height=0):
+    def build(self, context, event, ANCHOR):
         self.DT = Data(context, event)
+        for container in self.containers:
+            container.build(self.DT)
 
 
     def close(self, context):
-        pass
+        for container in self.containers:
+            container.close(self.DT)
 
 
     def update(self, context, event):
-        pass
+        for container in self.containers:
+            container.update(self.DT)
 
 
     def draw_2d(self, context):
-        pass
+        for container in self.containers:
+            container.draw_2d(self.DT)
+
 

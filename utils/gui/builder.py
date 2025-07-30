@@ -17,7 +17,11 @@ from ..event import (
     Events,
     UserControls,
 )
-from .. import addon
+from ..enums import (
+    GUI_STATUS,
+    ANCHOR,
+    SPAN,
+)
 from .. import graphics
 from .. import screen
 
