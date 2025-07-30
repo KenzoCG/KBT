@@ -98,27 +98,71 @@ def set_line_width(width=0):
     state.line_width_set(width)
 
 # ------------------------------------------------------------------------------- #
-# BATCHES
+# UNIFORM COLOR BATCHES
 # ------------------------------------------------------------------------------- #
 
-def gen_points_batch(points=[]):
+def gen_uniform_color_points_batch(points=None):
+    """
+    points : list of vectors
+    """
     return batch_for_shader(UNIFORM_COLOR, 'POINTS', {"pos": points})
 
 
-def gen_line_batch(lines=[]):
+def gen_uniform_color_line_batch(lines=None):
+    """
+    lines : list of tuples containing 2 vectors each
+    """
     return batch_for_shader(UNIFORM_COLOR, 'LINES', {"pos": lines})
 
 
-def gen_tri_batch(tris=[]):
-    return batch_for_shader(UNIFORM_COLOR, 'TRIS', {"pos": [v for tri in tris for v in tri]}, indices=[(i, i+1, i+2) for i in range(0, len(tris), 3)])
+def gen_uniform_color_tri_batch(tris=None):
+    """
+    tris : list of tuples containing 3 vectors each
+    """
+    points = [v for tri in tris for v in tri]
+    indices = [(i, i+1, i+2) for i in range(0, len(tris), 3)]
+    return batch_for_shader(UNIFORM_COLOR, 'TRIS', {"pos": points}, indices=indices)
 
 
-def draw_uniform_batch(batch, color=(0,0,0,1)):
+def draw_uniform_color_batch(batch, color=(0,0,0,1)):
     UNIFORM_COLOR.uniform_float("color", color)
     batch.draw(UNIFORM_COLOR)
 
 # ------------------------------------------------------------------------------- #
-# SHAPES
+# SMOOTH COLOR BATCHES
+# ------------------------------------------------------------------------------- #
+
+def gen_smooth_color_line_batch(lines=None, colors=None):
+    """
+    lines  : list of tuples containing 2 vectors each
+    colors : list of vectors with length 4, count must match total points
+    """
+    return batch_for_shader(SMOOTH_COLOR, 'LINES', {"pos": lines, "color": colors})
+
+
+def gen_smooth_color_tri_batch(tris=None, colors=None):
+    """
+    tris   : list of tuples containing 3 vectors each
+    colors : list of vectors with length 4, count must match total points
+    """
+    points = [v for tri in tris for v in tri]
+    indices = [(i, i+1, i+2) for i in range(0, len(points), 3)]
+    return batch_for_shader(SMOOTH_COLOR, 'TRIS', {"pos": points, "color": colors}, indices=indices)
+
+
+def gen_smooth_color_tri_batch_indexed(points=None, colors=None, indices=None):
+    """
+    points : list of vectors
+    colors : list of vectors with length 4, count must match total points
+    """
+    return batch_for_shader(SMOOTH_COLOR, 'TRIS', {"pos": points, "color": colors}, indices=indices)
+
+
+def draw_smooth_color_batch(batch):
+    batch.draw(SMOOTH_COLOR)
+
+# ------------------------------------------------------------------------------- #
+# PRESETS
 # ------------------------------------------------------------------------------- #
 
 def draw_circle_2d(radius=12, res=32, center=Vector((0,0)), color=(0,0,0,1)):

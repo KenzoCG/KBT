@@ -16,7 +16,12 @@ import numpy
 import time
 import traceback
 from .. import utils
-from ..utils.enums import MODAL_STATUS
+from ..utils.enums import (
+    MODAL_STATUS,
+    GUI_STATUS,
+    ANCHOR,
+    SPAN,
+)
 
 # ------------------------------------------------------------------------------- #
 # OPERATOR
@@ -140,9 +145,9 @@ class MS_OT_RND_Modal(Operator):
     # --- Operations --- #
 
     def startup(self, context, event):
-        # Menu
-        self.menu = utils.gui.BoxMenu()
-        self.menu.build(context, event)
+        gui = utils.gui
+        self.menu = gui.menus.BoxMenu(x=0, y=0, w=0, h=0)
+        self.menu.build(context, event, ANCHOR.MID_C)
 
 
     def shutdown(self, context):
