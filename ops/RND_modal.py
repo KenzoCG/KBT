@@ -146,26 +146,28 @@ class MS_OT_RND_Modal(Operator):
 
     def startup(self, context, event):
         gui = utils.gui
-        self.menu = gui.menus.BoxMenu(context, event)
+
+        # Tabs
+        tabs_bar = gui.containers.TabsBar()
 
         # Workplane
         elements = []
-        workplane_panel = gui.containers.StackPanel(elements=elements)
+        panel = gui.containers.StackPanel(elements=elements)
+        tabs_bar.add_tab(label="Workplane", container=panel)
 
         # Draw
         elements = []
-        draw_panel = gui.containers.StackPanel(elements=elements)
+        panel = gui.containers.StackPanel(elements=elements)
+        tabs_bar.add_tab(label="Draw", container=panel)
 
         # Edit
         elements = []
-        edit_panel = gui.containers.StackPanel(elements=elements)
-
-        # Tabs
-        tabs_bar = gui.containers.TabsBar(containers=[workplane_panel, draw_panel, edit_panel])
+        panel = gui.containers.StackPanel(elements=elements)
+        tabs_bar.add_tab(label="Edit", container=panel)
 
         # Menu
-        containers = [tabs_bar]
-        self.menu.build(x=100, y=500, w=100, h=400, anchor=ANCHOR.MID_L, containers=containers)
+        self.menu = gui.menus.BoxMenu(context, event)
+        self.menu.build(x=100, y=500, w=100, h=400, anchor=ANCHOR.MID_L, containers=[tabs_bar])
 
 
     def shutdown(self, context):
