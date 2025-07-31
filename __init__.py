@@ -1,5 +1,5 @@
 # ------------------------------------------------------------------------------- #
-# Addon Name : MeshSketcher
+# Addon Name : BMT
 # Author     : KenzoCG
 # Copyright  : ©CGBoundary
 # ------------------------------------------------------------------------------- #
@@ -9,8 +9,8 @@
 # ------------------------------------------------------------------------------- #
 
 bl_info = {
-    'name'       : "MeshSketcher",
-    'description': "Mesh editing pen tool",
+    'name'       : "BMT",
+    'description': "Blender Mesh Tools",
     'author'     : "KenzoCG",
     'version'    : (1, 0, 0),
     'blender'    : (4, 4, 0),
