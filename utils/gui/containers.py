@@ -53,6 +53,11 @@ class TabItem:
         self.container = None
 
 
+    def build(self, DT:Data):
+        if self.container:
+            self.container.build(DT)
+
+
     def draw_2d(self, DT:Data):
         pass
 
