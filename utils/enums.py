@@ -48,15 +48,6 @@ class SPAN(Enum):
     VERTICAL   = 3
 
 
-class FILL(Enum):
-    NONE           = 0
-    SOLID          = 1
-    FADE_TO_BOTTOM = 2
-    FADE_TO_TOP    = 3
-    FADE_TO_LEFT   = 4
-    FADE_TO_RIGHT  = 5
-
-
 class DTYPE(Enum):
     NONE     = 0
     BOOL     = 1
