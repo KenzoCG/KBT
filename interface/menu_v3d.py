@@ -9,8 +9,8 @@ from ..utils import addon
 # MENU
 # ------------------------------------------------------------------------------- #
 
-class MS_MT_Menu_V3D(bpy.types.Menu):
-    bl_idname = "MS_MT_Menu_V3D"
+class BMT_MT_Menu_V3D(bpy.types.Menu):
+    bl_idname = "BMT_MT_Menu_V3D"
     bl_label = addon.name_and_version_string()
 
 
@@ -21,7 +21,7 @@ class MS_MT_Menu_V3D(bpy.types.Menu):
         layout = self.layout
         layout.operator_context = 'INVOKE_DEFAULT'
         # Ops
-        layout.operator("ms.rnd_modal", text="R&D Modal", icon="TOOL_SETTINGS")
+        layout.operator("bmt.rnd_modal", text="R&D Modal", icon="TOOL_SETTINGS")
         # Blender
         layout.separator()
         layout.menu("SCREEN_MT_user_menu", text="Quick Favorites", icon="BLENDER")

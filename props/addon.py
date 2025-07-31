@@ -16,20 +16,20 @@ from bpy.props import (
     PointerProperty,
     StringProperty,
 )
-from .settings import MS_PROPS_Settings
-from .gui import MS_PROPS_GUI
-from .dev import MS_PROPS_Dev
+from .settings import BMT_PROPS_Settings
+from .gui import BMT_PROPS_GUI
+from .dev import BMT_PROPS_Dev
 from .. import utils
 
 # ------------------------------------------------------------------------------- #
 # ADDON PREFS
 # ------------------------------------------------------------------------------- #
 
-class MS_ADDON_Prefs(AddonPreferences):
+class BMT_ADDON_Prefs(AddonPreferences):
     bl_idname = utils.addon.name()
-    settings : PointerProperty(type=MS_PROPS_Settings)
-    gui      : PointerProperty(type=MS_PROPS_GUI)
-    dev      : PointerProperty(type=MS_PROPS_Dev)
+    settings : PointerProperty(type=BMT_PROPS_Settings)
+    gui      : PointerProperty(type=BMT_PROPS_GUI)
+    dev      : PointerProperty(type=BMT_PROPS_Dev)
     tab_opts = (
         ('SETTINGS', "Settings" , ""),
         ('INFO'    , "Info"     , ""),
@@ -43,13 +43,13 @@ class MS_ADDON_Prefs(AddonPreferences):
         row = self.layout.row()
         row.prop(self, 'tabs', expand=True)
         if self.tabs == 'SETTINGS':
-            MS_PROPS_Settings.draw(self.layout)
+            BMT_PROPS_Settings.draw(self.layout)
         elif self.tabs == 'INFO':
             draw_info(self.layout)
         elif self.tabs == 'GUI':
-            MS_PROPS_GUI.draw(self.layout)
+            BMT_PROPS_GUI.draw(self.layout)
         elif self.tabs == 'DEV':
-            MS_PROPS_Dev.draw(self.layout)
+            BMT_PROPS_Dev.draw(self.layout)
 
 
 def draw_info(layout):

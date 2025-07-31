@@ -22,7 +22,7 @@ from .. import utils
 # PROPS
 # ------------------------------------------------------------------------------- #
 
-class MS_PROPS_Dev(PropertyGroup):
+class BMT_PROPS_Dev(PropertyGroup):
     debug_on : BoolProperty(name="Debug", default=True)
 
     @staticmethod

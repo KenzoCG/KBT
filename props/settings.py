@@ -22,7 +22,7 @@ from .. import utils
 # PROPS
 # ------------------------------------------------------------------------------- #
 
-class MS_PROPS_Settings(PropertyGroup):
+class BMT_PROPS_Settings(PropertyGroup):
     prop_1: BoolProperty(name="Prop 1")
 
     @staticmethod
