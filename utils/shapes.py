@@ -1,3 +1,7 @@
+# ------------------------------------------------------------------------------- #
+# IMPORTS
+# ------------------------------------------------------------------------------- #
+
 import mathutils
 from mathutils import (
     Vector,
@@ -7,19 +11,19 @@ from mathutils import (
 from .enums import ANCHOR
 
 # ------------------------------------------------------------------------------- #
-# SHAPES
+# 2D
 # ------------------------------------------------------------------------------- #
 
 class Rect2D:
-    def __init__(self, x=0, y=0, w=0, h=0, anchor=ANCHOR.MID_C):
+    def __init__(self):
         # Position
-        self.x = x
-        self.y = y
+        self.x = 0
+        self.y = 0
         # Dimensions
-        self.w = w
-        self.h = h
+        self.w = 0
+        self.h = 0
         # Basis
-        self.anchor = anchor
+        self.anchor = ANCHOR.MID_C
         # Bounds
         self.tl = Vector((0, 0))
         self.tr = Vector((0, 0))
@@ -27,7 +31,15 @@ class Rect2D:
         self.br = Vector((0, 0))
 
 
-    def build_boundary(self):
+    def set_props(self, x=0, y=0, w=0, h=0, anchor=ANCHOR.MID_C):
+        self.x = x
+        self.y = y
+        self.w = w
+        self.h = h
+        self.anchor = anchor
+
+
+    def build(self):
         def set_boundary_points(lx=0, rx=0, ty=0, by=0):
             self.tl = Vector((lx, ty))
             self.tr = Vector((rx, ty))
@@ -113,7 +125,6 @@ class Rect2D:
         rx = self.tr.x + tolerance
         ty = self.tl.y + tolerance
         by = self.bl.y - tolerance
-
         if x >= lx and x <= rx:
             if y <= ty and y >= by:
                 return True
@@ -121,14 +132,8 @@ class Rect2D:
 
 
     def get_tris_and_indices(self):
-        tris = [
-            self.bl, self.br, self.tr,
-            self.bl, self.tr, self.tl
-        ]
-        indices = [
-            (0, 1, 2),
-            (0, 2, 3)
-        ]
+        tris = [self.bl, self.br, self.tr, self.tl]
+        indices = [(0, 1, 2), (0, 2, 3)]
         return tris, indices
 
 

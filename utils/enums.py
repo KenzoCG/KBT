@@ -24,8 +24,9 @@ class MODAL_STATUS(Enum):
 # ------------------------------------------------------------------------------- #
 
 class GUI_STATUS(Enum):
-    IDLE    = 0
-    FOCUSED = 1
+    IDLE     = 0
+    FOCUSED  = 1
+    DISABLED = 2
 
 
 class ANCHOR(Enum):
@@ -41,13 +42,27 @@ class ANCHOR(Enum):
 
 
 class SPAN(Enum):
-    FIT        = 0
-    FILL       = 1
+    NONE       = 0
+    BOTH       = 1
     HORIZONTAL = 2
     VERTICAL   = 3
 
 
-class STYLE(Enum):
-    NONE    = 0
-    UNIFORM = 1
-    SMOOTH  = 2
+class FILL(Enum):
+    NONE           = 0
+    SOLID          = 1
+    FADE_TO_BOTTOM = 2
+    FADE_TO_TOP    = 3
+    FADE_TO_LEFT   = 4
+    FADE_TO_RIGHT  = 5
+
+
+class DTYPE(Enum):
+    NONE     = 0
+    BOOL     = 1
+    INT      = 2
+    FLOAT    = 3
+    STRING   = 4
+    COLOR    = 5
+    VECTOR_2 = 6
+    VECTOR_3 = 7

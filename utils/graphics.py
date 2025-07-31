@@ -185,7 +185,7 @@ def draw_circle_2d(radius=12, res=32, center=Vector((0,0)), color=(0,0,0,1)):
 # TEXT
 # ------------------------------------------------------------------------------- #
 
-def get_scaled_font_size():
+def get_scaled_font_size_from_prefs():
     prefs = addon.prefs()
     size = prefs.gui.settings.font_size
     return size * screen.ui_scale()

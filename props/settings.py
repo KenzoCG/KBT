@@ -24,8 +24,6 @@ from .. import utils
 
 class MS_PROPS_Settings(PropertyGroup):
     prop_1: BoolProperty(name="Prop 1")
-    prop_2: BoolProperty(name="Prop 2")
-
 
     @staticmethod
     def draw(layout):
@@ -36,4 +34,4 @@ class MS_PROPS_Settings(PropertyGroup):
         box = layout.box()
         box.label(text="Settings", icon='TOOL_SETTINGS')
         row = box.row(align=True)
-        row.prop(settings, 'scripts_dir')
+        row.prop(settings, 'prop_1', text="Prop 1")

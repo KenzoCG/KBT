@@ -54,7 +54,7 @@ class MS_OT_RND_Modal(Operator):
             self.events.CANCEL  = {'ESC'}
             self.controls = utils.event.UserControls(events=self.events)
             self.region_ui_controller = utils.screen.RegionUI_Controller(context)
-            self.region_ui_controller.hide(header=False, tool_settings=False, toolbar=False, sidebar=False, last_op=False)
+            self.region_ui_controller.hide(header=True, tool_settings=True, toolbar=True, sidebar=True, last_op=True)
             # Startup
             self.startup(context, event)
             # Shader
@@ -146,8 +146,26 @@ class MS_OT_RND_Modal(Operator):
 
     def startup(self, context, event):
         gui = utils.gui
-        self.menu = gui.menus.BoxMenu(x=0, y=0, w=0, h=0)
-        self.menu.build(context, event, ANCHOR.MID_C)
+        self.menu = gui.menus.BoxMenu(context, event)
+
+        # Workplane
+        elements = []
+        workplane_panel = gui.containers.StackPanel(elements=elements)
+
+        # Draw
+        elements = []
+        draw_panel = gui.containers.StackPanel(elements=elements)
+
+        # Edit
+        elements = []
+        edit_panel = gui.containers.StackPanel(elements=elements)
+
+        # Tabs
+        tabs_bar = gui.containers.TabsBar(containers=[workplane_panel, draw_panel, edit_panel])
+
+        # Menu
+        containers = [tabs_bar]
+        self.menu.build(x=100, y=500, w=100, h=400, anchor=ANCHOR.MID_L, containers=containers)
 
 
     def shutdown(self, context):

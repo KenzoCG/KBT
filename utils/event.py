@@ -28,6 +28,10 @@ class Events:
 class UserControls:
     def __init__(self, events=None):
         self.events = events if isinstance(events, Events) else Events()
+        self.reset()
+
+
+    def reset(self):
         self.key = ''
         self.pressed = False
         self.released = False

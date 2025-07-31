@@ -25,52 +25,43 @@ from ..shapes import Rect2D
 # ------------------------------------------------------------------------------- #
 
 class StackPanel:
-    def __init__(self):
-        pass
+    def __init__(self, elements=None):
+        self.rect = Rect2D()
+        self.elements = elements
 
 
     def build(self, DT:Data):
-        pass
+        for element in self.elements:
+            element.build(DT)
 
 
     def update(self, DT:Data):
-        pass
+        for element in self.elements:
+            element.update(DT)
 
 
     def draw_2d(self, DT:Data):
-        pass
-
-
-class ScrollPanel:
-    def __init__(self):
-        pass
-
-
-    def build(self, DT:Data):
-        pass
-
-
-    def update(self, DT:Data):
-        pass
-
-
-    def draw_2d(self, DT:Data):
-        pass
+        for element in self.elements:
+            element.draw_2d(DT)
 
 
 class TabsBar:
-    def __init__(self):
-        pass
+    def __init__(self, containers=None):
+        self.rect = Rect2D()
+        self.containers = containers
 
 
     def build(self, DT:Data):
-        pass
+        for container in self.containers:
+            container.build(DT)
 
 
     def update(self, DT:Data):
-        pass
+        for container in self.containers:
+            container.update(DT)
 
 
     def draw_2d(self, DT:Data):
-        pass
+        for container in self.containers:
+            container.draw_2d(DT)
 
