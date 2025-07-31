@@ -56,7 +56,7 @@ class BoxMenu:
         self.border_batch = None
 
 
-    def build(self, x=0, y=0, w=0, h=0, anchor=ANCHOR.MID_C):
+    def build(self, x=0, y=0, w=0, h=0, anchor=ANCHOR.MID_C, containers=None):
         # Rect
         self.rect.set_props(x=x, y=y, w=w, h=h, anchor=anchor)
         self.rect.build()
@@ -64,8 +64,10 @@ class BoxMenu:
         self.background_batch = gen_uniform_color_tri_batch_indexed(*self.rect.get_tris_and_indices())
         self.border_batch = gen_uniform_color_line_batch(lines=self.rect.get_boundary_lines())
         # Internal
-        for container in self.containers:
-            container.build(self.DT)
+        if isinstance(containers, list):
+            self.containers = containers
+            for container in self.containers:
+                container.build(self.DT)
 
 
     def disable(self):
