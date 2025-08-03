@@ -30,8 +30,8 @@ from ..utils.enums import (
 PRINT_START_STOP = True
 PRINT_TIME = False
 
-class BMT_OT_RND_Modal(Operator):
-    bl_idname      = "bmt.rnd_modal"
+class KBT_OT_RND_Modal(Operator):
+    bl_idname      = "kbt.rnd_modal"
     bl_label       = "RND Modal"
     bl_options     = {'REGISTER', 'UNDO', 'BLOCKING'}
     bl_description = f"{utils.addon.name()} | R&D Modal"

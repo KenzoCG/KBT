@@ -22,7 +22,7 @@ from .. import utils
 # PROPS
 # ------------------------------------------------------------------------------- #
 
-class BMT_PROPS_GUI_Colors(PropertyGroup):
+class KBT_PROPS_GUI_Colors(PropertyGroup):
     font : FloatVectorProperty(name="Font", size=4, min=0, max=1, subtype='COLOR', default=(1, 1, 1, 1)) # type: ignore
     background : FloatVectorProperty(name="Background", size=4, min=0, max=1, subtype='COLOR', default=(0, 0, 0, 0.125)) # type: ignore
     container : FloatVectorProperty(name="Container", size=4, min=0, max=1, subtype='COLOR', default=(0, 0, 0, 0.125)) # type: ignore
@@ -30,14 +30,14 @@ class BMT_PROPS_GUI_Colors(PropertyGroup):
     border : FloatVectorProperty(name="Border", size=4, min=0, max=1, subtype='COLOR', default=(0, 0, 0, 0.25)) # type: ignore
 
 
-class BMT_PROPS_GUI_Settings(PropertyGroup):
+class KBT_PROPS_GUI_Settings(PropertyGroup):
     padding   : IntProperty(name="UI Padding", min=3, max=10, default=3) # type: ignore
     font_size : IntProperty(name="Font Size", min=8, max=24, default=12) # type: ignore
 
 
-class BMT_PROPS_GUI(PropertyGroup):
-    settings : PointerProperty(type=BMT_PROPS_GUI_Settings) # type: ignore
-    colors   : PointerProperty(type=BMT_PROPS_GUI_Colors) # type: ignore
+class KBT_PROPS_GUI(PropertyGroup):
+    settings : PointerProperty(type=KBT_PROPS_GUI_Settings) # type: ignore
+    colors   : PointerProperty(type=KBT_PROPS_GUI_Colors) # type: ignore
 
     @staticmethod
     def draw(layout):

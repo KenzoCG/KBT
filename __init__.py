@@ -1,5 +1,5 @@
 # ------------------------------------------------------------------------------- #
-# Addon Name : BMT
+# Addon Name : KBT
 # Author     : KenzoCG
 # Copyright  : ©CGBoundary
 # ------------------------------------------------------------------------------- #
@@ -9,8 +9,8 @@
 # ------------------------------------------------------------------------------- #
 
 bl_info = {
-    'name'       : "BMT",
-    'description': "Blender Mesh Tools",
+    'name'       : "KBT",
+    'description': "Kenzo's B3D Tools",
     'author'     : "KenzoCG",
     'version'    : (1, 0, 0),
     'blender'    : (4, 4, 0),
@@ -71,7 +71,7 @@ def register_keymaps():
     km = kc.keymaps.new(name="3D View", space_type="VIEW_3D")
     # Menu V3D
     kmi = km.keymap_items.new("wm.call_menu", 'Q', "PRESS", ctrl=False, shift=False, alt=False)
-    kmi.properties.name = "MS_MT_Menu_V3D"
+    kmi.properties.name = "KBT_MT_Menu_V3D"
     KEYS.append((km, kmi))
 
 

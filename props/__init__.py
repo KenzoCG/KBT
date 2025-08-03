@@ -5,17 +5,17 @@
 import bpy
 from bpy.props import PointerProperty
 # Addon Prefs
-from .dev import BMT_PROPS_Dev
+from .dev import KBT_PROPS_Dev
 from .gui import (
-    BMT_PROPS_GUI_Settings,
-    BMT_PROPS_GUI_Colors,
-    BMT_PROPS_GUI,
+    KBT_PROPS_GUI_Settings,
+    KBT_PROPS_GUI_Colors,
+    KBT_PROPS_GUI,
 )
-from .settings import BMT_PROPS_Settings
-from .addon import BMT_ADDON_Prefs
+from .settings import KBT_PROPS_Settings
+from .addon import KBT_ADDON_Prefs
 # ID Props
-from .object import BMT_PROPS_Object
-from .mesh import BMT_PROPS_Mesh
+from .object import KBT_PROPS_Object
+from .mesh import KBT_PROPS_Mesh
 
 # ------------------------------------------------------------------------------- #
 # REGISTER
@@ -23,15 +23,15 @@ from .mesh import BMT_PROPS_Mesh
 
 CLASSES = (
     # Addon Prefs
-    BMT_PROPS_Dev,
-    BMT_PROPS_GUI_Settings,
-    BMT_PROPS_GUI_Colors,
-    BMT_PROPS_GUI,
-    BMT_PROPS_Settings,
-    BMT_ADDON_Prefs,
+    KBT_PROPS_Dev,
+    KBT_PROPS_GUI_Settings,
+    KBT_PROPS_GUI_Colors,
+    KBT_PROPS_GUI,
+    KBT_PROPS_Settings,
+    KBT_ADDON_Prefs,
     # ID Props
-    BMT_PROPS_Object,
-    BMT_PROPS_Mesh,
+    KBT_PROPS_Object,
+    KBT_PROPS_Mesh,
 )
 
 
@@ -40,13 +40,13 @@ def register():
     for cls in CLASSES:
         register_class(cls)
 
-    bpy.types.Object.bmt = PointerProperty(type=BMT_PROPS_Object)
-    bpy.types.Mesh.bmt = PointerProperty(type=BMT_PROPS_Mesh)
+    bpy.types.Object.kbt = PointerProperty(type=KBT_PROPS_Object)
+    bpy.types.Mesh.kbt = PointerProperty(type=KBT_PROPS_Mesh)
 
 
 def unregister():
-    del bpy.types.Object.bmt
-    del bpy.types.Mesh.bmt
+    del bpy.types.Object.kbt
+    del bpy.types.Mesh.kbt
 
     from bpy.utils import unregister_class
     for cls in reversed(CLASSES):

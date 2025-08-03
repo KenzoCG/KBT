@@ -9,11 +9,11 @@ from .. import utils
 # BASE
 # ------------------------------------------------------------------------------- #
 
-class BMT_Panel_V3D(bpy.types.Panel):
-    bl_label = 'BMT_Panel_V3D'
+class KBT_Panel_V3D(bpy.types.Panel):
+    bl_label = 'KBT_Panel_V3D'
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
-    bl_category = "BMT"
+    bl_category = "KBT"
     bl_options = {'DEFAULT_CLOSED'}
 
     @classmethod
@@ -24,7 +24,7 @@ class BMT_Panel_V3D(bpy.types.Panel):
 # PANEL
 # ------------------------------------------------------------------------------- #
 
-class BMT_PT_Ops_V3D(BMT_Panel_V3D):
+class KBT_PT_Ops_V3D(KBT_Panel_V3D):
     bl_label = "Operators"
     bl_options = {'HEADER_LAYOUT_EXPAND'}
 
@@ -32,10 +32,9 @@ class BMT_PT_Ops_V3D(BMT_Panel_V3D):
         prefs = utils.addon.prefs()
         box = self.layout.box()
         box.operator("ms.rnd_modal", text="R&D Modal")
-        box.operator("wm.url_open", text="Docs").url = "https://kenzocg.github.io"
 
 
-class BMT_PT_Settings_V3D(BMT_Panel_V3D):
+class KBT_PT_Settings_V3D(KBT_Panel_V3D):
     bl_label = "Settings"
 
     def draw(self, context):

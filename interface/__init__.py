@@ -4,11 +4,11 @@
 
 import bpy
 from .menu_v3d import (
-    BMT_MT_Menu_V3D,
+    KBT_MT_Menu_V3D,
 )
 from .panel_v3d import (
-    BMT_PT_Ops_V3D,
-    BMT_PT_Settings_V3D,
+    KBT_PT_Ops_V3D,
+    KBT_PT_Settings_V3D,
 )
 
 # ------------------------------------------------------------------------------- #
@@ -17,10 +17,10 @@ from .panel_v3d import (
 
 CLASSES = (
     # 3D View - Menu
-    BMT_MT_Menu_V3D,
+    KBT_MT_Menu_V3D,
     # 3D View - Panels
-    BMT_PT_Ops_V3D,
-    BMT_PT_Settings_V3D,
+    KBT_PT_Ops_V3D,
+    KBT_PT_Settings_V3D,
 )
 
 

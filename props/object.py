@@ -22,6 +22,6 @@ from .. import utils
 # PROPS
 # ------------------------------------------------------------------------------- #
 
-class BMT_PROPS_Object(PropertyGroup):
+class KBT_PROPS_Object(PropertyGroup):
     uuid = StringProperty(name="uuid", default="")
 

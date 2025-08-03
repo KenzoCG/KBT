@@ -22,7 +22,7 @@ from .. import utils
 # PROPS
 # ------------------------------------------------------------------------------- #
 
-class BMT_PROPS_Dev(PropertyGroup):
+class KBT_PROPS_Dev(PropertyGroup):
     debug_on : BoolProperty(name="Debug", default=True)
 
     @staticmethod

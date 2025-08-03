@@ -22,6 +22,6 @@ from .. import utils
 # PROPS
 # ------------------------------------------------------------------------------- #
 
-class BMT_PROPS_Mesh(PropertyGroup):
+class KBT_PROPS_Mesh(PropertyGroup):
     uuid = StringProperty(name="uuid", default="")
 
