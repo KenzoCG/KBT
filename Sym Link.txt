@@ -1,2 +1,1 @@
-4.5 - KBT - Blender Mesh Tools
 mklink /D "C:\Users\Kenzo\AppData\Roaming\Blender Foundation\Blender\4.5\scripts\addons\KBT" "C:\Users\Kenzo\laboratory\Repos\KBT"
