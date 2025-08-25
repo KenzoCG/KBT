@@ -32,7 +32,7 @@ PRINT_TIME = False
 
 class KBT_OT_RND_Modal(Operator):
     bl_idname      = "kbt.rnd_modal"
-    bl_label       = "RND Modal"
+    bl_label       = "KBT - RND Modal"
     bl_options     = {'REGISTER', 'UNDO', 'BLOCKING'}
     bl_description = f"{utils.addon.name()} | R&D Modal"
 

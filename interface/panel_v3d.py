@@ -31,7 +31,7 @@ class KBT_PT_Ops_V3D(KBT_Panel_V3D):
     def draw(self, context):
         prefs = utils.addon.prefs()
         box = self.layout.box()
-        box.operator("ms.rnd_modal", text="R&D Modal")
+        box.operator("kbt.rnd_modal")
 
 
 class KBT_PT_Settings_V3D(KBT_Panel_V3D):

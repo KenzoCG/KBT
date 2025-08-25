@@ -8,7 +8,7 @@
 # ------------------------------------------------------------------------------- #
 
 bl_info = {
-    'name'       : "KBT",
+    'name'       : "KenzoCG_Blender_Addon_Template",
     'description': "KenzoCG Blender Addon Template",
     'author'     : "KenzoCG",
     'version'    : (1, 0, 0),

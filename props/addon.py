@@ -26,6 +26,7 @@ from .. import utils
 # ------------------------------------------------------------------------------- #
 
 class KBT_ADDON_Prefs(AddonPreferences):
+    print(utils.addon.name())
     bl_idname = utils.addon.name()
     settings : PointerProperty(type=KBT_PROPS_Settings)
     gui      : PointerProperty(type=KBT_PROPS_GUI)
