@@ -12,13 +12,12 @@ from mathutils import (
     Matrix,
     Color,
 )
-from .builder import Data
 from ..enums import (
     GUI_STATUS,
     ANCHOR,
     SPAN,
 )
-from ..shapes import Rect2D
+from . import builder
 
 # ------------------------------------------------------------------------------- #
 # GENERATORS

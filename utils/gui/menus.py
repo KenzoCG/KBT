@@ -17,6 +17,7 @@ from ..enums import (
     ANCHOR,
     SPAN,
 )
+from . import builder
 
 # ------------------------------------------------------------------------------- #
 # MENU SYSTEMS

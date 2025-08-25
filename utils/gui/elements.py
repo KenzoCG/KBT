@@ -19,8 +19,7 @@ from ..enums import (
     SPAN,
     DTYPE,
 )
-from ..shapes import Rect2D
-from .builder import Data
+from . import builder
 
 # ------------------------------------------------------------------------------- #
 # GENERATORS
