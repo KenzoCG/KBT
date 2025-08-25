@@ -57,9 +57,14 @@ def draw_info(layout):
     box = layout.box()
     box.label(text="Web Pages", icon='WORLD')
     row = box.row(align=True)
-    row.operator("wm.url_open", text="YouTube").url = "https://www.youtube.com/@cg-boundary"
+    row.operator("wm.url_open", text="GumRoad").url = "https://kenzocg.gumroad.com"
     row = box.row(align=True)
-    row.operator("wm.url_open", text="Website").url = "https://github.com/KenzoCG"
+    row.operator("wm.url_open", text="Udemy").url = "https://www.udemy.com/user/kenzocg"
+    row = box.row(align=True)
+    row.operator("wm.url_open", text="GitHub").url = "https://github.com/KenzoCG"
+    row = box.row(align=True)
+    row.operator("wm.url_open", text="Discord").url = "https://discord.gg/egAsFJqqES"
+
     # Contact
     box = layout.box()
     row = box.row()

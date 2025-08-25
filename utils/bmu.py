@@ -6,6 +6,7 @@ import bpy
 import bmesh
 import math
 import mathutils
+from contextlib import contextmanager
 from bpy.types import (
     Object,
     Mesh
@@ -27,37 +28,37 @@ from mathutils import (
 # MANAGE
 # ------------------------------------------------------------------------------- #
 
-def get_bmesh(obj:Object):
-    if isinstance(obj, Object):
-        if obj.type == 'MESH':
-            bm = None
-            if obj.data.is_editmode:
-                bm = bmesh.from_edit_mesh(obj.data)
-            else:
-                bm = bmesh.new()
-                bm.from_mesh(obj.data)
-            if isinstance(bm, BMesh) and bm.is_valid:
-                ensure_tables(bm)
-                ensure_indexes(bm)
-                return bm
-    return None
+@contextmanager
+def bmesh_from_object_mode(obj, update=False):
+    if not isinstance(obj, Object) or not isinstance(obj.data, Mesh):
+        yield None
+        return
+    bm = bmesh.new(use_operators=True)
+    bm.from_mesh(obj.data)
+    try:
+        yield bm
+    finally:
+        if update:
+            bm.select_flush_mode()
+            bm.to_mesh(obj.data)
+            obj.data.update()
+        bm.free()
+        del bm
 
 
-def close_bmesh(bm:BMesh, obj:Object):
-    if isinstance(bm, BMesh) and bm.is_valid:
-        if isinstance(obj, Object) and obj.type == 'MESH':
-            ensure_selections(bm)
-            if bm.is_wrapped:
-                bmesh.update_edit_mesh(obj.data)
-            else:
-                bm.to_mesh(obj.data)
-                bm.free()
-            obj.data.calc_loop_triangles()
-            obj.update_tag()
-        else:
-            bm.free()
-    bm = None
-    del bm
+@contextmanager
+def bmesh_from_edit_mode(obj, update=False):
+    if not isinstance(obj, Object) or not isinstance(obj.data, Mesh) or not obj.data.is_editmode:
+        yield None
+        return
+    bm = bmesh.from_edit_mesh(obj.data)
+    try:
+        yield bm
+    finally:
+        if update:
+            bm.select_flush_mode()
+            bmesh.update_edit_mesh(obj.data, loop_triangles=False)
+        del bm
 
 
 def ensure_tables(bm:BMesh):

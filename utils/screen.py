@@ -16,6 +16,13 @@ def area_width_height(context):
     area = context.area
     return area.width, area.height
 
+
+def v3d_area_tag_redraw():
+    for window in bpy.context.window_manager.windows:
+        for area in window.screen.areas:
+            if area.type == 'VIEW_3D':
+                area.tag_redraw()
+
 # ------------------------------------------------------------------------------- #
 # TYPES
 # ------------------------------------------------------------------------------- #

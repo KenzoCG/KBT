@@ -1,5 +1,4 @@
 # ------------------------------------------------------------------------------- #
-# Addon Name : KBT
 # Author     : KenzoCG
 # Copyright  : ©CGBoundary
 # ------------------------------------------------------------------------------- #
@@ -10,12 +9,13 @@
 
 bl_info = {
     'name'       : "KBT",
-    'description': "Kenzo's B3D Tools",
+    'description': "KenzoCG Blender Addon Template",
     'author'     : "KenzoCG",
     'version'    : (1, 0, 0),
-    'blender'    : (4, 4, 0),
+    'blender'    : (4, 5, 0),
     'location'   : "View3D",
-    'category'   : "3D View"}
+    'category'   : "3D View",
+}
 
 # ------------------------------------------------------------------------------- #
 # REGISTER
