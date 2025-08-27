@@ -4,6 +4,7 @@
 
 import bpy
 from .RND_modal import KBT_OT_RND_Modal
+from .bm_demo_one import KBT_OT_BM_ExampleOne
 
 # ------------------------------------------------------------------------------- #
 # REGISTER
@@ -11,6 +12,7 @@ from .RND_modal import KBT_OT_RND_Modal
 
 CLASSES = (
     KBT_OT_RND_Modal,
+    KBT_OT_BM_ExampleOne,
 )
 
 

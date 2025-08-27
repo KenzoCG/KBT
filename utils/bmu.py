@@ -45,7 +45,6 @@ def bmesh_from_object_mode(obj, update=False):
         bm.free()
         del bm
 
-
 @contextmanager
 def bmesh_from_edit_mode(obj, update=False):
     if not isinstance(obj, Object) or not isinstance(obj.data, Mesh) or not obj.data.is_editmode:

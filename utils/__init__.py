@@ -11,6 +11,7 @@ from . import enums
 from . import event
 from . import graphics
 from . import maths
+from . import object
 from . import ray
 from . import screen
 from . import shader
